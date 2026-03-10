@@ -31,152 +31,173 @@ def toggle_theme():
 
 is_dark = st.session_state.theme == "Dark"
 
-# Theme Variables
-bg_card = "linear-gradient(135deg, #1e2030 0%, #272b40 100%)" if is_dark else "white"
-border_card = "#363b54" if is_dark else "#e5e7eb"
-text_main = "#e2e8f0" if is_dark else "#111827"
-text_muted = "#9CA3AF" if is_dark else "#6b7280"
-bg_progress_outer = "#1f2235" if is_dark else "#f3f4f6"
-bg_alert = "linear-gradient(135deg, #4a1d1d, #3b1515)" if is_dark else "#fef2f2"
-border_alert = "#ef4444" if is_dark else "#fca5a5"
+# Theme Variables (Polished & Professional)
+bg_card = "linear-gradient(145deg, rgba(30,32,48,0.9) 0%, rgba(39,43,64,0.8) 100%)" if is_dark else "linear-gradient(145deg, #ffffff 0%, #f8fafc 100%)"
+border_card = "rgba(108, 99, 255, 0.2)" if is_dark else "rgba(108, 99, 255, 0.15)"
+text_main = "#f8fafc" if is_dark else "#0f172a"
+text_muted = "#94a3b8" if is_dark else "#64748b"
+bg_progress_outer = "rgba(0,0,0,0.2)" if is_dark else "#e2e8f0"
+bg_alert = "linear-gradient(135deg, rgba(74,29,29,0.8), rgba(59,21,21,0.8))" if is_dark else "rgba(254,242,242,0.8)"
+border_alert = "#ef4444" if is_dark else "#f87171"
 text_alert = "#fca5a5" if is_dark else "#991b1b"
-bg_challenge = "#1f1520" if is_dark else "#fffbeb"
-border_challenge = "#f59e0b" if is_dark else "#fcd34d"
+bg_challenge = "rgba(31,21,32,0.8)" if is_dark else "rgba(255,251,235,0.8)"
+border_challenge = "#f59e0b" if is_dark else "#fbbf24"
 text_challenge = "#fcd34d" if is_dark else "#b45309"
-bg_sidebar = "linear-gradient(180deg, #13152a 0%, #1a1d32 100%)" if is_dark else "#f9fafb"
+bg_sidebar = "linear-gradient(180deg, #0f111a 0%, #17192b 100%)" if is_dark else "#f8fafc"
 
-# Badges (Dark/Light)
-badge_comp_bg = "#064e3b" if is_dark else "#d1fae5"
-badge_comp_txt = "#6ee7b7" if is_dark else "#065f46"
-badge_wip_bg = "#1e3a5f" if is_dark else "#dbeafe"
-badge_wip_txt = "#60a5fa" if is_dark else "#1e40af"
-badge_no_bg = "#3b3520" if is_dark else "#fef3c7"
-badge_no_txt = "#fcd34d" if is_dark else "#92400e"
+# Badges (Modern Soft UI)
+badge_comp_bg = "rgba(16, 185, 129, 0.15)" if is_dark else "rgba(16, 185, 129, 0.1)"
+badge_comp_txt = "#34d399" if is_dark else "#047857"
+badge_wip_bg = "rgba(59, 130, 246, 0.15)" if is_dark else "rgba(59, 130, 246, 0.1)"
+badge_wip_txt = "#60a5fa" if is_dark else "#1d4ed8"
+badge_no_bg = "rgba(245, 158, 11, 0.15)" if is_dark else "rgba(245, 158, 11, 0.1)"
+badge_no_txt = "#fbbf24" if is_dark else "#b45309"
 
-badge_tool_bg = "#2d2f4e" if is_dark else "#e0e7ff"
-badge_tool_border = "#4a4d6e" if is_dark else "#c7d2fe"
-badge_tool_txt = "#a5b4fc" if is_dark else "#3730a3"
+badge_tool_bg = "rgba(108, 99, 255, 0.1)" if is_dark else "rgba(108, 99, 255, 0.05)"
+badge_tool_border = "rgba(108, 99, 255, 0.3)" if is_dark else "rgba(108, 99, 255, 0.2)"
+badge_tool_txt = "#a5b4fc" if is_dark else "#4338ca"
 
 # ── Custom CSS ────────────────────────────────
 st.markdown(f"""
 <style>
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
-* {{ font-family: 'Inter', sans-serif; }}
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+* {{ font-family: 'Plus Jakarta Sans', sans-serif; }}
 
 /* Force background colors depending on theme (overriding config.toml if necessary) */
 .stApp {{
-    background-color: {"#0E1117" if is_dark else "#ffffff"};
+    background-color: {"#0B0E14" if is_dark else "#f1f5f9"};
     color: {text_main};
 }}
 
 .kpi-card {{
     background: {bg_card};
     border: 1px solid {border_card};
-    border-radius: 16px;
-    padding: 20px 18px;
+    border-radius: 20px;
+    padding: 24px 20px;
     text-align: center;
-    transition: transform 0.2s, box-shadow 0.2s;
-    box-shadow: {"none" if is_dark else "0 4px 6px -1px rgba(0, 0, 0, 0.1)"};
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: {"0 4px 20px rgba(0,0,0,0.3)" if is_dark else "0 4px 20px rgba(0,0,0,0.05)"};
+    backdrop-filter: blur(10px);
 }}
 .kpi-card:hover {{
-    transform: translateY(-4px);
-    box-shadow: 0 8px 24px rgba(108,99,255,.25);
+    transform: translateY(-5px);
+    box-shadow: {"0 8px 30px rgba(108,99,255,0.2)" if is_dark else "0 8px 30px rgba(108,99,255,0.15)"};
+    border-color: #6C63FF;
 }}
 .kpi-number {{
-    font-size: 2.4rem;
+    font-size: 2.8rem;
     font-weight: 800;
-    background: linear-gradient(135deg, #6C63FF, #48C9B0);
+    background: linear-gradient(135deg, #6C63FF 0%, #48C9B0 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    line-height: 1.1;
+    line-height: 1;
+    margin-bottom: 8px;
+    letter-spacing: -1px;
 }}
 .kpi-label {{
     font-size: 0.85rem;
     color: {text_muted};
-    margin-top: 6px;
     text-transform: uppercase;
-    letter-spacing: 1px;
-    font-weight: 600;
+    letter-spacing: 1.5px;
+    font-weight: 700;
 }}
 
 .badge {{
-    display: inline-block;
-    padding: 4px 14px;
-    border-radius: 20px;
-    font-size: 0.78rem;
-    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 6px 16px;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 700;
     letter-spacing: 0.5px;
+    text-transform: uppercase;
 }}
-.badge-completed   {{ background: {badge_comp_bg}; color: {badge_comp_txt}; }}
-.badge-wip         {{ background: {badge_wip_bg}; color: {badge_wip_txt}; }}
-.badge-no          {{ background: {badge_no_bg}; color: {badge_no_txt}; }}
+.badge-completed   {{ background: {badge_comp_bg}; color: {badge_comp_txt}; border: 1px solid rgba(16,185,129,0.3); }}
+.badge-wip         {{ background: {badge_wip_bg}; color: {badge_wip_txt}; border: 1px solid rgba(59,130,246,0.3); }}
+.badge-no          {{ background: {badge_no_bg}; color: {badge_no_txt}; border: 1px solid rgba(245,158,11,0.3); }}
 
 .progress-outer {{
     background: {bg_progress_outer};
-    border-radius: 10px;
-    height: 14px;
+    border-radius: 999px;
+    height: 10px;
     overflow: hidden;
     width: 100%;
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
 }}
 .progress-inner {{
     height: 100%;
-    border-radius: 10px;
-    transition: width 0.6s ease;
+    border-radius: 999px;
+    transition: width 1s cubic-bezier(0.4, 0, 0.2, 1);
 }}
 
 .alert-box {{
     background: {bg_alert};
     border-left: 4px solid {border_alert};
-    border-radius: 8px;
-    padding: 12px 18px;
-    margin-bottom: 8px;
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-bottom: 12px;
     color: {text_alert};
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }}
 
 .section-header {{
-    font-size: 1.15rem;
-    font-weight: 700;
+    font-size: 1.25rem;
+    font-weight: 800;
     color: {text_main};
-    margin: 24px 0 12px 0;
+    margin: 32px 0 16px 0;
     display: flex;
     align-items: center;
-    gap: 8px;
+    gap: 12px;
+    letter-spacing: -0.5px;
 }}
 
 .detail-card {{
     background: {bg_card};
     border: 1px solid {border_card};
-    border-radius: 16px;
-    padding: 24px;
-    margin-bottom: 12px;
-    box-shadow: {"none" if is_dark else "0 4px 6px -1px rgba(0, 0, 0, 0.1)"};
+    border-radius: 20px;
+    padding: 28px;
+    margin-bottom: 16px;
+    box-shadow: {"0 4px 20px rgba(0,0,0,0.3)" if is_dark else "0 4px 20px rgba(0,0,0,0.05)"};
     color: {text_main};
+    backdrop-filter: blur(10px);
 }}
-.detail-card h2 {{ color: #6C63FF; margin: 0 0 16px 0; }}
-.detail-card p  {{ color: {text_main}; margin: 6px 0; }}
-.detail-label   {{ color: {text_muted}; font-weight: 600; }}
+.detail-card h2 {{ 
+    color: #6C63FF; 
+    margin: 0 0 20px 0;
+    font-weight: 800;
+    letter-spacing: -1px;
+}}
+.detail-card p  {{ color: {text_main}; margin: 8px 0; line-height: 1.6; }}
+.detail-label   {{ color: {text_muted}; font-weight: 700; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; }}
 
 .tool-tag {{
     display: inline-block;
     background: {badge_tool_bg};
     border: 1px solid {badge_tool_border};
     color: {badge_tool_txt};
-    padding: 3px 10px;
-    border-radius: 12px;
-    font-size: 0.75rem;
-    margin: 2px 3px;
-    font-weight: 500;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-size: 0.8rem;
+    margin: 4px 4px 4px 0;
+    font-weight: 600;
+    transition: all 0.2s;
+}}
+.tool-tag:hover {{
+    transform: translateY(-2px);
+    background: {border_card};
 }}
 
 .challenge-box {{
     background: {bg_challenge};
     border-left: 4px solid {border_challenge};
-    border-radius: 8px;
-    padding: 10px 16px;
+    border-radius: 12px;
+    padding: 16px;
     color: {text_challenge};
-    font-size: 0.88rem;
-    margin-top: 8px;
+    font-size: 0.95rem;
+    margin-top: 12px;
 }}
 
 footer {{ visibility: hidden; }}
@@ -351,9 +372,9 @@ if page == "📊 Overview":
         fig = px.pie(sc, values="Count", names="Status", hole=0.55, color="Status",
                      color_discrete_map=STATUS_COLORS)
         fig.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-                          font_color=text_main, margin=dict(t=20,b=20,l=20,r=20),
-                          legend=dict(orientation="h", y=-0.1), height=340)
-        fig.update_traces(textinfo="label+value", textfont_size=13)
+                          font=dict(color=text_main), margin=dict(t=20,b=20,l=20,r=20),
+                          legend=dict(orientation="h", y=-0.1, font=dict(color=text_main)), height=340)
+        fig.update_traces(textinfo="label+value", textfont_size=13, textfont_color=text_main)
         st.plotly_chart(fig, use_container_width=True)
 
     with right:
@@ -362,9 +383,11 @@ if page == "📊 Overview":
         fig2 = px.bar(bar_df, x="Completion %", y="POC Name", orientation="h",
                       color="Status", color_discrete_map=STATUS_COLORS, text="Completion %")
         fig2.update_layout(paper_bgcolor="rgba(0,0,0,0)", plot_bgcolor="rgba(0,0,0,0)",
-                           font_color=text_main, margin=dict(t=20,b=20,l=20,r=20),
+                           font=dict(color=text_main), margin=dict(t=20,b=20,l=20,r=20),
                            xaxis_title="", yaxis_title="", showlegend=False, height=340)
-        fig2.update_traces(texttemplate="%{text}%", textposition="outside")
+        fig2.update_traces(texttemplate="%{text}%", textposition="outside", textfont_color=text_main)
+        fig2.update_yaxes(tickfont=dict(color=text_main), title_font=dict(color=text_main))
+        fig2.update_xaxes(tickfont=dict(color=text_main))
         st.plotly_chart(fig2, use_container_width=True)
 
 
