@@ -144,7 +144,19 @@ refresh_count = st_autorefresh(interval=30_000, limit=None, key="live_refresh")
 # ──────────────────────────────────────────────
 #  DATA
 # ──────────────────────────────────────────────
-DATA_PATH = os.path.join(os.path.dirname(__file__), "data", "poc_data.csv")
+DATA_DIR = os.path.join(os.path.dirname(__file__), "data")
+DATA_PATH = os.path.join(DATA_DIR, "poc_data.csv")
+
+# Ensure directory exists
+os.makedirs(DATA_DIR, exist_ok=True)
+
+# Ensure CSV exists so Cloud deployment doesn't crash
+if not os.path.exists(DATA_PATH):
+    empty_df = pd.DataFrame(columns=[
+        "POC Name", "Tools & Requirements", "Completion %", 
+        "Status", "Expected End Date", "Recent Comments", "Challenges"
+    ])
+    empty_df.to_csv(DATA_PATH, index=False)
 
 @st.cache_data(ttl=15)  # Cache data for 15s, then re-read from disk
 def load_data_cached():
@@ -161,7 +173,7 @@ def save_data(dataframe):
     dataframe.to_csv(DATA_PATH, index=False)
 
 # ── Hidden changelog (backend only) ──────────
-CHANGELOG_PATH = os.path.join(os.path.dirname(__file__), "data", "changelog.csv")
+CHANGELOG_PATH = os.path.join(DATA_DIR, "changelog.csv")
 
 def log_change(action, poc_name, details=""):
     """Silently records every change to data/changelog.csv. Not visible on dashboard."""
