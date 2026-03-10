@@ -57,6 +57,11 @@ badge_tool_bg = "rgba(108, 99, 255, 0.1)" if is_dark else "rgba(108, 99, 255, 0.
 badge_tool_border = "rgba(108, 99, 255, 0.3)" if is_dark else "rgba(108, 99, 255, 0.2)"
 badge_tool_txt = "#a5b4fc" if is_dark else "#4338ca"
 
+# Inputs & Widgets
+bg_input = "rgba(15, 17, 26, 0.6)" if is_dark else "#ffffff"
+border_input = "rgba(108, 99, 255, 0.3)" if is_dark else "#cbd5e1"
+text_input = "#f8fafc" if is_dark else "#0f172a"
+
 # ── Custom CSS ────────────────────────────────
 st.markdown(f"""
 <style>
@@ -198,6 +203,43 @@ st.markdown(f"""
     color: {text_challenge};
     font-size: 0.95rem;
     margin-top: 12px;
+}}
+
+/* Form Inputs, Selects, and TextAreas */
+.stTextInput input, .stTextArea textarea, 
+.stSelectbox div[data-baseweb="select"] > div,
+.stMultiSelect div[data-baseweb="select"] > div,
+.stDateInput input, .stNumberInput input {{
+    background-color: {bg_input} !important;
+    color: {text_input} !important;
+    border: 1px solid {border_input} !important;
+    border-radius: 12px !important;
+    font-weight: 500 !important;
+}}
+
+/* Fix dropdown menus in Light mode */
+ul[data-baseweb="menu"] {{
+    background-color: {bg_input} !important;
+    color: {text_input} !important;
+    border: 1px solid {border_input} !important;
+}}
+li[data-baseweb="menu-item"], li[role="option"] {{
+    color: {text_input} !important;
+}}
+li[data-baseweb="menu-item"]:hover, li[role="option"]:hover {{
+    background-color: {border_card} !important;
+}}
+
+/* Fix the sidebar's multi-select pill tags */
+.stMultiSelect span[data-baseweb="tag"] {{
+    background-color: {border_card} !important;
+    color: {text_main} !important;
+}}
+
+/* Buttons */
+.stButton > button {{
+    border-radius: 12px !important;
+    transition: all 0.2s !important;
 }}
 
 footer {{ visibility: hidden; }}
