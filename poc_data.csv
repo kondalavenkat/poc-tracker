@@ -1,0 +1,9 @@
+POC Name,Tools & Requirements,Completion %,Status,Expected End Date,Recent Comments,Challenges
+Docling,Python; Docling SDK; Tesseract OCR,100,Completed,2026-03-10,Dependency setup done. Testing document parsing accuracy,Tesseract installation issues on some machines
+Llama360,Python; Ollama; LLaMA 3.2; LangChain,65,NO,2026-03-12,Model loaded locally. Running benchmark tests,High RAM usage with large context window
+PandaAI,Python; PandasAI; OpenAI API,30,NO,2026-03-15,Basic queries working but complex joins failing,Outdated library version conflicts
+CrewAI,Python; CrewAI; GPT-4; LangChain,100,Completed,2026-03-01,Demo presented to team. Well received,
+AutoGen,Python; AutoGen; Azure OpenAI,55,WIP,2026-03-14,Multi-agent conversation working. Fine-tuning prompts,Token cost management for long conversations
+DocETL,Python; DocETL; Pandas; SQLite,20,WIP,2026-03-11,Initial setup done. Pipeline crashes on large files,Runtime error with files > 500MB
+LangGraph,Python; LangGraph; LangChain; FAISS,100,Completed,2026-03-05,Full RAG pipeline operational and tested,
+MemGPT,Python; MemGPT; OpenAI API; PostgreSQL,0,NO,2026-03-20,Waiting for API access approval,API access pending from vendor
